@@ -18,7 +18,7 @@ public class UserController {
 
     @RequestMapping("/")
     public String getHomePage() {
-        return "eric.html";
+        return "hello";
     }
 
 }
