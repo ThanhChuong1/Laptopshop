@@ -1,5 +1,7 @@
 package vn.hoidanit.laptopshop.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +26,18 @@ public class UserController {
     @RequestMapping("/")
     public String getHomePage(Model model) {
         String test = this.userService.handleHello();
+        List<User> arrays = this.userService.getUserByEmail("namechuong19@gmail.com");
+        System.out.println(arrays);
         model.addAttribute("eric", test);
         return "hello";
+    }
+
+    @RequestMapping("/admin/user/index")
+    public String getIndex(Model model) {
+        String test = this.userService.handleHello();
+
+        model.addAttribute("eric", test);
+        return "admin/user/index";
     }
 
     @RequestMapping("/admin/user")
