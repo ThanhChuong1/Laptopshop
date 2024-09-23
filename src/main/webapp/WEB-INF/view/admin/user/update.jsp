@@ -17,16 +17,16 @@
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-md-6 col-12 mx-auto">
-                            <h2>Create New User</h2>
+                            <h2> Update User</h2>
                             <hr>
-                            <form:form method="post" action="/admin/user/create" modelAttribute="newUser">
+                            <form:form method="post" action="/admin/user/create" modelAttribute="user">
+                                <div class="mb-3">
+                                    <label class="form-label">ID:</label>
+                                    <form:input type="id" class="form-control" path="id" />
+                                </div>
                                 <div class="mb-3">
                                     <label class="form-label">Email:</label>
                                     <form:input type="email" class="form-control" path="email" />
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Password:</label>
-                                    <form:input type="password" class="form-control" path="password" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Full Name:</label>
@@ -40,11 +40,9 @@
                                     <label class="form-label">Phone:</label>
                                     <form:input type="phone" class="form-control" path="phone" />
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form:form>
                         </div>
                     </div>
                 </div>
             </body>
-
-            </html>

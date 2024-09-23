@@ -10,23 +10,31 @@ import vn.hoidanit.laptopshop.repository.UserRepository;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public String handleHello(){
+    public String handleHello() {
         return "Hello from service";
     }
 
-    public User handleSaveUser( User user){
+    public User handleSaveUser(User user) {
         User saveUser = this.userRepository.save(user);
         return saveUser;
     }
-    public List<User> getAllUser(){
+
+    public List<User> getAllUser() {
         return this.userRepository.findAll();
     }
-    public List<User> getUserByEmail(String email){
+
+    public List<User> getUserByEmail(String email) {
         return this.userRepository.findByEmail(email);
+    }
+
+    public User getuserbyId(Long id) {
+        User users = this.userRepository.getUserById(id);
+        return users;
+
     }
 }

@@ -32,26 +32,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>
-                                            <button class="btn btn-success">View</button>
-                                            <button class="btn btn-primary">Update</button>
-                                            <button class="btn btn-danger">Update</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>
-                                            <button class="btn btn-success">View</button>
-                                            <button class="btn btn-primary">Update</button>
-                                            <button class="btn btn-danger">Update</button>
-                                        </td>
-                                    </tr>
+                                    <c:forEach var="user" items="${user1}">
+                                        <tr>
+                                            <th scope="row">${user.id}</th>
+                                            <td>${user.email}</td>
+                                            <td>${user.fullName}</td>
+                                            <td>
+                                                <a class="btn btn-success" href="/admin/user/index/${user.id}">View</a>
+                                                <a class="btn btn-primary"
+                                                    href="/admin/user/update/${user.id}">Update</a>
+                                                <button class="btn btn-danger">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+
                                 </tbody>
                             </table>
                         </div>
