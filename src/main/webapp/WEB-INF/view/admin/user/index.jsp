@@ -28,6 +28,7 @@
                                         <th scope="col">ID</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">FullName</th>
+                                        <th scope="col">Address</th>
                                         <th colspan="2">Action</th>
                                     </tr>
                                 </thead>
@@ -37,11 +38,13 @@
                                             <th scope="row">${user.id}</th>
                                             <td>${user.email}</td>
                                             <td>${user.fullName}</td>
+                                            <td>${user.address}</td>
                                             <td>
                                                 <a class="btn btn-success" href="/admin/user/index/${user.id}">View</a>
                                                 <a class="btn btn-primary"
                                                     href="/admin/user/update/${user.id}">Update</a>
-                                                <button class="btn btn-danger">Delete</button>
+                                                <a href="/admin/user/delete/${user.id}"
+                                                    class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     </c:forEach>
