@@ -29,32 +29,11 @@
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container-fluid px-4">
-                            <h1 class="mt-4">Manage Users</h1>
+                            <h1 class="mt-4">Dashboard</h1>
                             <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><a href="/admin">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Users</li>
+                                <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
-                            <div class="mt-5">
-                                <div class="row">
-                                    <div class="col-12 mx-auto">
-                                        <div class="d-flex justify-content-between">
-                                            <h2>User detail ${user.id}</h2>
-                                            <a href="/admin/user/index" class="btn btn-primary">Back</a>
-                                            <hr>
-                                        </div>
-                                        Full Name :${user.fullName}
-                                        <br>
-                                        Email:${user.email}
-                                        <br>
-                                        Phone:${user.phone}
-                                        <br>
-                                        Address:${user.address}
-                                        <br>
-                                        Password:${user.password}
-
-                                    </div>
-                                </div>
-                            </div>
+                            <div>Order</div>
                         </div>
                     </main>
                     <jsp:include page="../layout/footer.jsp" />
