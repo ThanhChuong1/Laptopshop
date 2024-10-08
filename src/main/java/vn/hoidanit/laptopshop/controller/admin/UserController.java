@@ -2,6 +2,8 @@ package vn.hoidanit.laptopshop.controller.admin;
 
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,19 +11,27 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.service.UploadService;
 import vn.hoidanit.laptopshop.service.UserService;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.servlet.ServletContext;
 
 @Controller
 public class UserController {
     // DI : dependency injection
     private final UserService userService;
+    private final UploadService uploadService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UploadService uploadService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.uploadService = uploadService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     // @RequestMapping("/")
@@ -59,12 +69,16 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/update")
-    public String PostUpdateUser(Model model, @ModelAttribute("user") User dayladata) {
+    public String PostUpdateUser(Model model, @ModelAttribute("user") User dayladata,
+            @RequestParam("hoidanitFile") MultipartFile file) {
         User currentUser = this.userService.getuserbyId(dayladata.getId());
         if (currentUser != null) {
             currentUser.setFullName(currentUser.getFullName());
             currentUser.setAddress(currentUser.getAddress());
             currentUser.setPhone(currentUser.getPhone());
+            currentUser.setRole(currentUser.getRole());
+            String avatar = this.uploadService.handleUpload(file, "avatar");
+            currentUser.setAvatar(avatar);
             this.userService.handleSaveUser(currentUser);
         }
 
@@ -73,18 +87,23 @@ public class UserController {
     }
 
     // CREATE
-    @RequestMapping("/admin/user/create")
+    @GetMapping("/admin/user/create")
     public String create(Model model) {
         model.addAttribute("newUser", new User());
         return "admin/user/create";
     }
 
-    // @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
-    // public String createUser(Model model, @ModelAttribute("newUser") User
-    // dayladata) {
-    // this.userService.handleSaveUser(dayladata);
-
-    // }
+    @PostMapping(value = "/admin/user/create")
+    public String createUser(Model model, @ModelAttribute("newUser") User dayladata,
+            @RequestParam("hoidanitFile") MultipartFile file) {
+        String avatar = this.uploadService.handleUpload(file, "avatar");
+        String hashPassword = this.passwordEncoder.encode(dayladata.getPassword());
+        dayladata.setRole(this.userService.getRoleByName(dayladata.getRole().getName()));
+        dayladata.setAvatar(avatar);
+        dayladata.setPassword(hashPassword);
+        this.userService.handleSaveUser(dayladata);// day la luu user
+        return "redirect:/admin/user/index";
+    }
 
     // Delete
     @GetMapping("/admin/user/delete/{id}")

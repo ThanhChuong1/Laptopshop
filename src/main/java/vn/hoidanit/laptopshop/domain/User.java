@@ -2,6 +2,9 @@ package vn.hoidanit.laptopshop.domain;
 
 import java.util.List;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,7 +27,9 @@ public class User {
     private String phone;
     private String avatar;
     // USER many => to one -role = nhiều user thuộc 1 role
+    @SuppressWarnings("deprecation")
     @ManyToOne
+    @Cascade(CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "role_id")
     private Role role;
     //
@@ -39,6 +44,22 @@ public class User {
     // this.address = address;
     // this.phone =phone;
     // }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.order = order;
+    }
 
     public long getId() {
         return id;

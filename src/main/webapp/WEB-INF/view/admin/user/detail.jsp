@@ -49,8 +49,10 @@
                                         Phone:${user.phone}
                                         <br>
                                         Address:${user.address}
+                                        <!-- <br>
+                                        Password:${user.password} -->
                                         <br>
-                                        Password:${user.password}
+                                        Role:${user.role.name}
 
                                     </div>
                                 </div>

@@ -49,6 +49,7 @@
                                                     <th>Email</th>
                                                     <th>FullName</th>
                                                     <th>Address</th>
+                                                    <th>Role</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -56,9 +57,10 @@
                                                 <c:forEach var="user" items="${user1}">
                                                     <tr>
                                                         <th scope="row">${user.id}</th>
-                                                        <td>${user.email}</td>
+                                                        <td>${user.email}</td>  
                                                         <td>${user.fullName}</td>
                                                         <td>${user.address}</td>
+                                                        <td>${user.role.name}</td>
                                                         <td>
                                                             <a class="btn btn-success"
                                                                 href="/admin/user/index/${user.id}">View</a>

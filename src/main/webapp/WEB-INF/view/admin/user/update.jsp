@@ -13,6 +13,19 @@
                 <title>Dashboard</title>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+                <script>
+                    document.getElementById('avatarFile').addEventListener('change', function (event) {
+                        var file = event.target.files[0];
+                        if (file) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                document.getElementById('avatarPreview').src = e.target.result;
+                                document.getElementById('avatarPreview').style.display = 'block';
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                </script>
             </head>
 
             <body class="sb-nav-fixed">
@@ -40,7 +53,8 @@
                                         <div class="col-md-6 col-12 mx-auto">
                                             <h2> Update User</h2>
                                             <hr>
-                                            <form:form method="post" action="/admin/user/create" modelAttribute="user">
+                                            <form:form method="post" action="/admin/user/create" modelAttribute="user"
+                                                enctype="multipart/form-data">
                                                 <div class="mb-3" style="display: none;">
                                                     <label class="form-label">ID:</label>
                                                     <form:input type="id" class="form-control" path="id" />
@@ -62,6 +76,22 @@
                                                     <label class="form-label">Phone:</label>
                                                     <form:input type="phone" class="form-control" path="phone" />
                                                 </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Role:</label>
+                                                    <form:select class="form-select" path="role.name">
+                                                        <form:option value="ADMIN">ADMIN</form:option>
+                                                        <form:option value="USER">USER</form:option>
+                                                    </form:select>
+                                                </div>
+                                                <!-- <div class="mb-3">
+                                                    <label for="avatarFile" class="form-label">Avatar:</label>
+                                                    <input class="form-control" type="file" path="avatar"
+                                                        accept=".png, .jpg, .jpeg" name="hoidanitFile" />
+                                                </div> -->
+                                                <div class="mb-3">
+                                                    <label class="form-label">Avatar:</label>
+                                                    <form:input type="file" class="form-control" path="avatar" />
+                                                </div>
                                                 <button type="submit" class="btn btn-primary">Update</button>
                                             </form:form>
                                         </div>
@@ -74,7 +104,7 @@
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>
-                <script src="js/scripts.js"></script>
+                <!-- <script src="js/scripts.js"></script> -->
             </body>
 
             </html>
