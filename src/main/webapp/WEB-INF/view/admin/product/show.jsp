@@ -29,7 +29,7 @@
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container-fluid px-4">
-                            <h1 class="mt-4">Manage Users</h1>
+                            <h1 class="mt-4">Manage Products</h1>
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active"><a href="/admin">Dashboard</a></li>
                                 <li class="breadcrumb-item active">Users</li>
@@ -38,8 +38,9 @@
                                 <div class="row">
                                     <div class="col-12 mx-auto">
                                         <div class="d-flex justify-content-between">
-                                            <h3>List User</h3>
-                                            <a href="/admin/user/create" class="btn btn-primary">Create new user</a>
+                                            <h3>List Product</h3>
+                                            <a href="/admin/product/create" class="btn btn-primary">Create new
+                                                product</a>
                                         </div>
                                         </hr>
                                         <table class="table table-bordered table-hover">
@@ -48,32 +49,28 @@
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Price</th>
-                                                    <th>Short Description</th>
-                                                    <th>Description</th>
-                                                    <th>Quantity</th>
                                                     <th>Factory</th>
                                                 </tr>
                                             </thead>
-                                            <!-- <tbody>
-                                                <c:forEach var="user" items="${user1}">
+                                            <tbody>
+                                                <c:forEach var="product" items="${products}">
                                                     <tr>
-                                                        <th scope="row">${user.id}</th>
-                                                        <td>${user.email}</td>  
-                                                        <td>${user.fullName}</td>
-                                                        <td>${user.address}</td>
-                                                        <td>${user.role.name}</td>
+                                                        <th scope="row">${product.id}</th>
+                                                        <td>${product.name}</td>
+                                                        <td>${product.price}</td>
+                                                        <td>${product.factory}</td>
                                                         <td>
                                                             <a class="btn btn-success"
-                                                                href="/admin/user/index/${user.id}">View</a>
+                                                                href="/admin/product/index/${product.id}">View</a>
                                                             <a class="btn btn-primary"
-                                                                href="/admin/user/update/${user.id}">Update</a>
-                                                            <a href="/admin/user/delete/${user.id}"
+                                                                href="/admin/product/update/${product.id}">Update</a>
+                                                            <a href="/admin/product/delete/${product.id}"
                                                                 class="btn btn-danger">Delete</a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
 
-                                            </tbody> -->
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>

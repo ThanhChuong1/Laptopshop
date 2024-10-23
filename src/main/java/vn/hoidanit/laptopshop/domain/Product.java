@@ -2,12 +2,17 @@ package vn.hoidanit.laptopshop.domain;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.Range;
+
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "products")
@@ -15,11 +20,17 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Nonnull
+    @Size(min = 2, message = "Name must be greater than or equal to 2")
     private String name;
+    @Range(min = 1, message = "Price must be than 0")
     private double price;
     private String image;
+    @Size(min = 2, message = "Detail description is not blank")
     private String detailDesc;
+    @Size(min = 2, message = "Short description is not blank")
     private String shortDesc;
+    @Range(min = 1, message = "Quantity must be than 0 or equal 1 ")
     private long quantity;
     private long sold;
     private String factory;
