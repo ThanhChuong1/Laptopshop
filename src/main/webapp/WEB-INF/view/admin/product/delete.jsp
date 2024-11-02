@@ -30,25 +30,25 @@
                     <div id="layoutSidenav_content">
                         <main>
                             <div class="container-fluid px-4">
-                                <h1 class="mt-4">Manage Users</h1>
+                                <h1 class="mt-4">Manage Product</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item active"><a href="/admin">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Users</li>
+                                    <li class="breadcrumb-item active">Products</li>
                                 </ol>
                                 <div class="container mt-5">
                                     <div class="row">
                                         <div class="col-12 mx-auto">
                                             <div class="d-flex justify-content-between">
-                                                <h2>Delete with User Id= ${userId}</h2>
+                                                <h2>Delete with Product Id= ${Id}</h2>
                                                 <hr>
                                             </div>
                                             <h3 class="btn btn-danger">Do want to delete</h3>
-                                            <form:form method="POST" action="/admin/user/delete "
-                                                modelAttribute="newUser">
+                                            <form:form method="POST" action="/admin/product/delete "
+                                                modelAttribute="product">
                                                 <div class="mb-3" style="display: none;">
                                                     <label class="form-label">Id:</label>
                                                     <form:input type="text" class="form-control" path="id"
-                                                        value="${userId}" />
+                                                        value="${Id}" />
                                                 </div>
                                                 <button type="submit">Confirm</button>
                                             </form:form>

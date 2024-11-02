@@ -32,46 +32,31 @@
                             <h1 class="mt-4">Manage Products</h1>
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active"><a href="/admin">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Users</li>
+                                <li class="breadcrumb-item active">Products</li>
                             </ol>
                             <div class="mt-5">
                                 <div class="row">
                                     <div class="col-12 mx-auto">
                                         <div class="d-flex justify-content-between">
-                                            <h3>List Product</h3>
-                                            <a href="/admin/product/create" class="btn btn-primary">Create new
-                                                product</a>
+                                            <h2>Product detail = ${product.id}</h2>
+                                            <a href="/admin/product" class="btn btn-primary">Back</a>
+                                            <hr>
                                         </div>
-                                        </hr>
-                                        <table class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Price</th>
-                                                    <th>Factory</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach var="product" items="${products}">
-                                                    <tr>
-                                                        <th scope="row">${product.id}</th>
-                                                        <td>${product.name}</td>
-                                                        <td>${product.price}</td>
-                                                        <td>${product.factory}</td>
-                                                        <td>
-                                                            <a class="btn btn-success"
-                                                                href="/admin/product/detail/${product.id}">View</a>
-                                                            <a class="btn btn-primary"
-                                                                href="/admin/product/update/${product.id}">Update</a>
-                                                            <a href="/admin/product/delete/${product.id}"
-                                                                class="btn btn-danger">Delete</a>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
+                                        Name :${product.name}
+                                        <br>
+                                        Price:${product.price}
+                                        <br>
+                                        Factory:${product.factory}
+                                        <br>
+                                        Image:
+                                        <div class="card" style="width: 60%">
+                                            <img class="card-img-top" src="/image/product/${product.image}"
+                                                alt="Card image cap" />
+                                        </div>
 
-                                            </tbody>
-                                        </table>
+                                        <!-- <br>
+                                        Password:${user.password} -->
+                                        <br>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +67,7 @@
             </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                 crossorigin="anonymous"></script>
-            <script src="js/scripts.js"></script>
+            <!-- <script src="js/scripts.js"></script> -->
         </body>
 
         </html>
