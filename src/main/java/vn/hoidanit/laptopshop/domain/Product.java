@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.validator.constraints.Range;
 
 import jakarta.annotation.Nonnull;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -20,13 +23,15 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Nonnull
+    @NotNull
     @Size(min = 2, message = "Name must be greater than or equal to 2")
     private String name;
     @Range(min = 1, message = "Price must be than 0")
     private double price;
     private String image;
-    @Size(min = 2, message = "Detail description is not blank")
+    @NotNull
+    @NotEmpty(message = "Detail description is not blank")
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String detailDesc;
     @Size(min = 2, message = "Short description is not blank")
     private String shortDesc;
