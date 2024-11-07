@@ -79,9 +79,7 @@
                 <!-- Hero End -->
 
 
-                <!-- Featurs Section Start -->
-                <jsp:include page="../layout/feature.jsp" />
-                <!-- Featurs Section End -->
+
 
 
                 <!-- Fruits Shop Start-->
@@ -122,7 +120,8 @@
                                                             <div
                                                                 class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                                 <h4 style="font-size: 15px;">
-                                                                    <a href="/product/detail/${product.id}"> ${product.name}
+                                                                    <a href="/product/detail/${product.id}">
+                                                                        ${product.name}
                                                                     </a>
                                                                 </h4>
                                                                 <p style="font-size: 13px;">${product.shortDesc}</p>
@@ -154,7 +153,9 @@
                 </div>
                 <!-- Fruits Shop End-->
 
-
+                <!-- Featurs Section Start -->
+                <jsp:include page="../layout/feature.jsp" />
+                <!-- Featurs Section End -->
 
 
 
