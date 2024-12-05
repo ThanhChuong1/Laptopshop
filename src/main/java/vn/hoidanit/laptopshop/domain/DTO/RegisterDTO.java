@@ -1,13 +1,18 @@
 package vn.hoidanit.laptopshop.domain.DTO;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import vn.hoidanit.laptopshop.service.validator.RegisterChecked;
 
 @RegisterChecked
 public class RegisterDTO {
+    @Size(min = 2, message = "First Name must be greater than or equal to 2 ")
     private String firstName;
     private String lastName;
+    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
     private String password;
+    @Size(min = 2, message = "Confirm Password must be greater than or equal to 2 ")
     private String confirmPassword;
 
     public String getFirstName() {

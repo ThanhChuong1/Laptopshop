@@ -34,14 +34,14 @@ public class ProductController {
     public String getPageProduct(Model model) {
         List<Product> prs = productService.getAllProducts();
         model.addAttribute("products", prs);
-        return "/admin/product/show";
+        return "admin/product/show";
     }
 
     // create
     @GetMapping("/admin/product/create")
     public String getPageCreateProduct(Model model) {
         model.addAttribute("newProduct", new Product());
-        return "/admin/product/create";
+        return "admin/product/create";
     }
 
     @PostMapping(value = "/admin/product/create")
@@ -55,7 +55,7 @@ public class ProductController {
         // }
         // validate
         if (newUserbindingResult.hasErrors()) {
-            return "/admin/product/create";
+            return "admin/product/create";
         }
         String product = this.uploadService.handleUpload(file, "product");
         daylaDaTa.setImage(product);
@@ -69,7 +69,7 @@ public class ProductController {
         Product prs = this.productService.getProductByid(id).get();
         model.addAttribute("product", prs);
         model.addAttribute("id", id);
-        return "/admin/product/detail";
+        return "admin/product/detail";
 
     }
 
@@ -78,7 +78,7 @@ public class ProductController {
     public String getUpdateProductPage(Model model, @PathVariable long id) {
         Optional<Product> currentProduct = this.productService.getProductByid(id);
         model.addAttribute("product", currentProduct.get());
-        return "/admin/product/update";
+        return "admin/product/update";
 
     }
 
@@ -88,7 +88,7 @@ public class ProductController {
             @RequestParam("hoidanitFile") MultipartFile file) {
 
         if (newUserbindingResult.hasErrors()) {
-            return "/admin/product/update";
+            return "admin/product/update";
         }
         Product currentProduct = this.productService.getProductByid(dayladata.getId()).get();
         if (currentProduct != null) {
@@ -120,7 +120,7 @@ public class ProductController {
     @PostMapping("/admin/product/delete")
     public String postdeleteProduct(Model model, @ModelAttribute("product") Product prs) {
         this.productService.deleteProduct(prs.getId());
-        return "redirect:/admin/product";
+        return "redirect:admin/product";
     }
 
 }
