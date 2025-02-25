@@ -4,7 +4,7 @@
             <div class="container px-0">
 
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand">
+                    <a href="/" class="navbar-brand">
                         <h1 class="text-primary display-6">Laptopshop</h1>
                     </a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
@@ -13,7 +13,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between bg-white mx-5" id="navbarCollapse">
                         <div class="navbar-nav">
-                            <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
+                            <a href="/" class="nav-item nav-link active">Trang chủ</a>
                             <a href="/product/detail" class="nav-item nav-link">Sản phẩm</a>
                         </div>
                         <div class="d-flex m-3 me-0">
@@ -22,11 +22,11 @@
                                 data-bs-toggle="modal" data-bs-target="#searchModal"><i
                                     class="fas fa-search text-primary"></i></button>
                             <c:if test="${not empty pageContext.request.userPrincipal}">
-                                <a href="#" class="position-relative me-4 my-auto">
+                                <a href="/cart" class="position-relative me-4 my-auto">
                                     <i class="fa fa-shopping-bag fa-2x"></i>
                                     <span
                                         class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                                        style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                                        style="top: -5px; left: 15px; height: 20px; min-width: 20px;">${sessionScope.sum}</span>
                                 </a>
                                 <div class="dropdown my-auto">
                                     <a href="#" class="dropdown" role="button" id="dropdownMenuLink"
