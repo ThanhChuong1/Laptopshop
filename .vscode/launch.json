@@ -39,6 +39,16 @@
             "projectName": "laptopshop",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-LaptopshopApplication<laptopshop>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "vn.thanhchuong.laptopshop.LaptopshopApplication",
+            "projectName": "laptopshop",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
